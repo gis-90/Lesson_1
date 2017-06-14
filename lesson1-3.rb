@@ -1,31 +1,41 @@
-puts "Введите 1ю сторону треугольника (а)"
-a = gets.to_f
-puts "Введите 2ю сторону треугольника (b)"
-b = gets.to_f
-puts "Введите 3ю сторону треугольника (с)"
-c = gets.to_f
+puts 'Давайте узнаем ваш треугольник'
 
+puts 'Введите значение A'
+side1 = gets.to_i
+puts 'Введите значение B'
+side2 = gets.to_i
+puts 'Введите значение C'
+side3 = gets.to_i
+# Определим самую большуюсторону где с-гипотенуза a-катет b-катет
 
-
-if a > b && a > c && a**2 == b**2 + c**2
-	puts "Треугольник прямоугольный с гипотенузой а"
-
-elsif b > a && b > c && b**2 == a**2 + c**2
-	puts "Треугольник прямоугольный с гипотенузой b"
-
-
-elsif c > a && c > b && c**2 == a**2 + b**2
-	puts "Треугольник прямоугольный с гипотенузой c"
-
-elsif (a + b) < c || (b + c) < a || (a + c) < b
-	puts "Треугольник задан не верно"
-  
-elsif a == b && b == c 
-	puts "Треугольник равносторонний"
-
-elsif a == b || b == c || a == c
-	puts "Треугольник равнобедренный"
-
-else
-	puts "Не прямоугольный, не равнобедренный, не равносторонний. Просто треугольник"
+if side1 > side2 && side1 > side3
+  z = side1
+  a = side2
+  b = side3
+elsif side2 > side1 && side2 > side3
+  z = side2
+  a = side1
+  b = side3
+elsif side3 > side1 && side3 > side2
+  z = side3
+  a = side1
+  b = side2
 end
+
+
+array = []
+
+
+if z == b && b == a && z == a
+  array.push('равносторонний')
+elsif z**2 == a**2 + b**2
+  array.push('прямоугольный')
+else
+  array.push('обычный')
+end
+
+if a == b || b == z || a == z
+  array.push('равнобедренный')
+end
+
+puts "Треугольник: #{array.join(', ')}"
